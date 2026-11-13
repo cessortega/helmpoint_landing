@@ -116,7 +116,7 @@ const LEGAL={
     foot:'Al enviar tus datos en este sitio confirmas que leíste este Aviso de Privacidad.'}
 };
 class Component extends DCLogic {
-  state={t:0,annual:false,faq:0,name:'',mail:'',size:null,sent:false,lgOpen:false,lgTab:'p',lgSec:0};
+  state={t:0,annual:false,faq:0,name:'',mail:'',size:null,useCase:'',sending:false,error:'',sent:false,lgOpen:false,lgTab:'p',lgSec:0};
   componentDidMount(){
     let th='light';try{th=localStorage.getItem('helmpoint-theme')||th}catch(e){}document.documentElement.dataset.theme=th;
     const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -204,10 +204,23 @@ class Component extends DCLogic {
         ['¿Puedo conectarlo con mi sistema?','Sí. Con webhooks recibes cada evento de la actividad en tu servidor, firmado para que sepas que viene de HelmPoint.']
       ].map(([q,a],i)=>{const open=s.faq===i;return {q,a,open,aria:open?'true':'false',on:()=>set({faq:open?null:i}),rot:open?'rotate(45deg)':'none',nBg:open?'var(--accent)':'var(--surface-2)',nFg:open?'#FFFFFF':'var(--text-3)',div:i?'1px solid var(--line)':'0'}}),
       demoPts:['Demo en vivo con tu propio flujo','Configuración inicial incluida','Sin tarjeta de crédito'].map(t=>({t})),
-      name:s.name,mail:s.mail,onName:e=>set({name:e.target.value}),onMail:e=>set({mail:e.target.value}),
+      name:s.name,mail:s.mail,useCase:s.useCase,onName:e=>set({name:e.target.value}),onMail:e=>set({mail:e.target.value}),onUseCase:e=>set({useCase:e.target.value}),
       sizes:['1–5','6–20','21–50','50+'].map(x=>{const on=s.size===x;return {t:x,aria:on?'true':'false',on:()=>set({size:x}),border:on?'1.5px solid #7C3AED':'1px solid #D6D8DF',bg:on?'#F3EEFF':'#FFFFFF',fg:on?'#5B21B6':'#4B4C58'}}),
-      blocked:!s.name.trim()||!/^\S+@\S+\.\S+$/.test(s.mail)||!s.size,
-      submit:e=>{e.preventDefault();set({sent:true})},sent:s.sent,notSent:!s.sent,firstName:(s.name.trim().split(' ')[0]||''),
+      blocked:s.sending||!s.name.trim()||!/^\S+@\S+\.\S+$/.test(s.mail)||!s.size,
+      blockedOpacity:(s.sending||!s.name.trim()||!/^\S+@\S+\.\S+$/.test(s.mail)||!s.size)?'.6':'1',
+      sending:s.sending,error:s.error,hasError:!!s.error,
+      submitLabel:s.sending?'Enviando…':'Agendar demo',
+      submit:async e=>{e.preventDefault();if(s.sending)return;
+        set({sending:true,error:''});
+        try{
+          const r=await fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({name:s.name.trim(),email:s.mail.trim(),size:s.size,useCase:s.useCase.trim()})});
+          const d=await r.json().catch(()=>({}));
+          if(r.ok&&d.ok)set({sent:true,sending:false});
+          else set({sending:false,error:d.error||'No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos a '+MAIL+'.'});
+        }catch(_){set({sending:false,error:'No hay conexión. Intenta de nuevo o escríbenos a '+MAIL+'.'})}
+      },
+      sent:s.sent,notSent:!s.sent,firstName:(s.name.trim().split(' ')[0]||''),
       openPriv:e=>{e&&e.preventDefault();set({lgOpen:true,lgTab:'p',lgSec:0})},openTerms:e=>{e&&e.preventDefault();set({lgOpen:true,lgTab:'t',lgSec:0})},
       lg:(()=>{const d=LEGAL[s.lgTab];return {open:s.lgOpen,mail:MAIL,close:()=>set({lgOpen:false}),
         tabs:[['t','Términos de uso'],['p','Aviso de Privacidad']].map(([k,x])=>{const on=s.lgTab===k;return {t:x,aria:on?'true':'false',on:()=>set({lgTab:k,lgSec:0}),bg:on?'var(--surface)':'transparent',fg:on?'var(--text)':'var(--text-2)',sh:on?'var(--shadow-sm)':'none'}}),
