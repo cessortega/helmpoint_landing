@@ -326,7 +326,7 @@
       <div class="rv">
         <span class="kick">Preguntas</span><h2 class="h2">Lo que siempre nos preguntan.</h2>
         <p class="lead">Respuestas cortas. Si tu duda es sobre tu operación en particular, mejor la vemos en una demo.</p>
-        <div class="fq-more"><b>¿Otra duda?</b><p>Te respondemos el mismo día, en español y con alguien que conoce el producto.</p><div class="fq-more-r"><a href="#demo" class="btn p">Solicitar demo</a><a href="{{ cMailto }}" class="fq-mail">{{ cMail }}</a></div></div>
+        <div class="fq-more"><b>¿Otra duda?</b><p>Cuéntanos cómo trabaja tu equipo en campo y lo configuramos a tu flujo.</p><div class="fq-more-r"><a href="#demo" class="btn p">Solicitar demo</a></div></div>
       </div>
       <div class="rv d1 fq-l">
         <sc-for list="{{ faqs }}" as="f">
@@ -380,17 +380,22 @@
   </section>
 
   <!-- FOOTER -->
-  <footer style="border-top:1px solid #ECECF1;padding:48px 0 36px">
-    <div class="wrap foot-g" style="display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:32px">
+  <footer style="padding:0 0 36px">
+    <div class="wrap"><div class="foot-trail" aria-hidden="true">
+      <svg width="40" height="40" viewBox="-50 -50 100 100" fill="none"><g class="spin" fill="#111118"><rect x="-4.5" y="-46" width="9" height="20" rx="4.5" fill="#7C3AED"></rect><rect x="-4.5" y="26" width="9" height="20" rx="4.5"></rect><rect x="-46" y="-4.5" width="20" height="9" rx="4.5"></rect><rect x="26" y="-4.5" width="20" height="9" rx="4.5"></rect><rect x="-6" y="-4" width="12" height="8" rx="4" transform="rotate(45) translate(34 0)"></rect><rect x="-6" y="-4" width="12" height="8" rx="4" transform="rotate(135) translate(34 0)"></rect><rect x="-6" y="-4" width="12" height="8" rx="4" transform="rotate(225) translate(34 0)"></rect><rect x="-6" y="-4" width="12" height="8" rx="4" transform="rotate(315) translate(34 0)"></rect><circle r="19" fill="none" stroke="#111118" stroke-width="9"></circle><circle r="5"></circle></g></svg>
+      <span class="foot-line"><i></i></span>
+      <svg width="34" height="34" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#7C3AED"></circle><circle cx="32" cy="32" r="16" fill="#FFFFFF"></circle><circle cx="32" cy="32" r="8" fill="#7C3AED"></circle></svg>
+    </div></div>
+    <div class="wrap foot-g" style="display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:32px;margin-top:40px">
       <div style="display:flex;flex-direction:column;gap:12px">
         <span style="display:flex;align-items:center;gap:9px"><svg width="26" height="28" viewBox="62 44 230 242" fill="none" style="color:#111118"><rect x="132" y="50" width="12" height="28" rx="6" fill="#7C3AED"></rect><rect x="132" y="158" width="12" height="28" rx="6" fill="currentColor"></rect><rect x="70" y="112" width="28" height="12" rx="6" fill="currentColor"></rect><rect x="178" y="112" width="28" height="12" rx="6" fill="currentColor"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(102 82) rotate(45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(174 82) rotate(-45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(102 154) rotate(-45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(174 154) rotate(45)"></rect><circle cx="138" cy="118" r="27" stroke="currentColor" stroke-width="13"></circle><circle cx="138" cy="118" r="7" fill="currentColor"></circle><g fill="currentColor"><circle cx="138" cy="197" r="7"></circle><circle cx="152" cy="211" r="7"></circle><circle cx="173" cy="211" r="7"></circle><circle cx="195" cy="207" r="7"></circle><circle cx="217" cy="203" r="7"></circle><circle cx="238" cy="202" r="7"></circle></g><circle cx="252" cy="247" r="32" fill="#7C3AED"></circle><circle cx="252" cy="247" r="16" fill="#FFFFFF"></circle><circle cx="252" cy="247" r="8" fill="#7C3AED"></circle></svg><span style="font-size:19px;font-weight:800;letter-spacing:-0.04em">HelmPoint</span></span>
         <span style="font-size:14px;color:#7E7F8C;max-width:280px;line-height:1.5">La app para tu equipo en campo y el panel para quien lo dirige.</span>
       </div>
       <sc-for list="{{ footCols }}" as="c">
-        <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:700;color:#111118">{{ c.t }}</span><sc-for list="{{ c.items }}" as="i"><a href="{{ i.h }}" onClick="{{ i.on }}" style="font-size:14px;color:#7E7F8C">{{ i.t }}</a></sc-for></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:700;color:#111118">{{ c.t }}</span><sc-for list="{{ c.items }}" as="i"><a href="{{ i.h }}" onClick="{{ i.on }}" class="foot-a">{{ i.t }}</a></sc-for></div>
       </sc-for>
     </div>
-    <div class="wrap" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:13px;color:#7E7F8C"><span>© 2026 HelmPoint · Helmdeck S.A.S.</span><a href="#" onClick="{{ openPriv }}" style="color:#7E7F8C">Aviso de Privacidad</a><a href="#" onClick="{{ openTerms }}" style="color:#7E7F8C">Términos de uso</a></div>
+    <div class="wrap"><div style="margin-top:40px;padding-top:20px;border-top:1px solid #ECECF1;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:13px;color:#7E7F8C"><span>© 2026 HelmPoint · Helmdeck S.A.S.</span><a href="#" onClick="{{ openTerms }}" style="color:#7E7F8C;margin-left:auto">Términos de uso</a><a href="#" onClick="{{ openPriv }}" style="color:#7E7F8C">Aviso de Privacidad</a></div></div>
   </footer>
 
   <!-- LEGAL (modal) -->
