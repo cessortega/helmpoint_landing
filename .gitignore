@@ -1,2 +1,5 @@
 .vercel
 .env*
+Claude outputs/
+.playwright-mcp/
+.DS_Store
