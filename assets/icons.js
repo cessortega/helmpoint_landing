@@ -1,6 +1,7 @@
 // Íconos de línea (estilo Lucide). window.HPIc(nombre, tamaño, grosor) → string SVG.
 (function(){
 const P={
+link:'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71|M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
 logo:'c12,8,4|M12 2v2|M12 12v2|M6 8H4|M20 8h-2|M7 18h10|M8 21h8',
 dash:'r3,3,7,9,1.5|r14,3,7,5,1.5|r14,12,7,9,1.5|r3,16,7,5,1.5',
 users:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2|c9,7,4|M22 21v-2a4 4 0 0 0-3-3.87|M16 3.13a4 4 0 0 1 0 7.75',

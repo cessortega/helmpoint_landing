@@ -235,15 +235,56 @@
         <div class="rv" style="text-align:center;display:flex;flex-direction:column;align-items:center">
           <span class="kick">Lo que incluye</span>
           <h2 class="h2" style="max-width:640px">Todo lo que una operación en campo necesita</h2>
+          <p class="lead" style="text-align:center">Sin módulos extra ni letras chiquitas. Esto viene en todos los planes.</p>
         </div>
-        <div class="three" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px">
-          <sc-for list="{{ feats }}" as="f">
-            <div class="card rv" style="padding:26px;display:flex;flex-direction:column;gap:10px;border-color:transparent">
-              <span style="width:44px;height:44px;border-radius:14px;background:{{ f.bg }};color:{{ f.fg }};display:grid;place-items:center">{{ f.ic }}</span>
-              <b style="font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-top:6px">{{ f.t }}</b>
-              <span style="font-size:14.5px;line-height:1.55;color:#4B4C58">{{ f.d }}</span>
+        <div class="bento">
+          <div class="card rv fc w3">
+            <span class="fc-i">{{ I.fMobile }}</span>
+            <b>Funciona sin señal</b>
+            <p>Todo se guarda en el teléfono y se envía solo al volver la conexión.</p>
+            <div class="fx">
+              <div class="fx-r"><i style="background:#B7791F"></i><span>Sin conexión · 3 actividades guardadas</span><em style="color:#96610F">en el teléfono</em></div>
+              <div class="fx-r"><i style="background:#7C3AED"></i><span>Señal recuperada · enviando</span><u><s></s></u><em style="color:#5B21B6;font-size:11px;font-weight:700">62%</em></div>
+              <div class="fx-r" style="background:#E4F5E9;color:#11753A"><i style="background:#15A34A"></i><span>Todo enviado · ya aparece en tu panel</span></div>
             </div>
-          </sc-for>
+          </div>
+          <div class="card rv fc w3">
+            <span class="fc-i">{{ I.fSparkle }}</span>
+            <b>Conecta Claude o ChatGPT</b>
+            <p>Pídele un formulario o un tipo de actividad, o mándale una imagen o un PDF para que lo arme a partir de ahí. Te regresa una vista previa con enlace y contraseña para revisarla en equipo.</p>
+            <div class="fx">
+              <div class="fx-q"><span>{{ I.clip }}checklist-mantenimiento.pdf</span>Arma este checklist como formulario, tal como viene en el PDF.</div>
+              <div class="fx-a">Listo. Aquí está la vista previa para revisarla con tu equipo:<span>{{ I.link13 }}Vista previa · PIN 4821</span></div>
+            </div>
+          </div>
+          <div class="card rv fc w2">
+            <span class="fc-i g">{{ I.fShield }}</span>
+            <b>MFA y roles</b>
+            <p>Verificación en dos pasos y permisos por sección para admin, supervisor y campo.</p>
+            <div class="fx">
+              <div class="fx-otp"><i class="ok">4</i><i class="ok">8</i><i class="ok">2</i><i class="on">9</i><i></i><i></i></div>
+              <div class="fx-roles"><span style="background:#7C3AED;color:#fff">Admin</span><span style="background:#F3EEFF;color:#5B21B6">Supervisor</span><span>Campo</span></div>
+            </div>
+          </div>
+          <div class="card rv fc w2">
+            <span class="fc-i g">{{ I.fCam }}</span>
+            <b>Fotos de referencia</b>
+            <p>Tu equipo repite la toma del ejemplo y puede marcar sobre la foto lo que importa.</p>
+            <div class="fx fx-ph">
+              <div style="background:linear-gradient(135deg,#EDE4FE,#D9CCF7);border:1.5px dashed #A78BFA"><span>Referencia</span></div>
+              <div style="background:linear-gradient(135deg,#DFF1E4,#C3E3CC)"><i></i><span>Tomada · {{ I.checkXs }}</span></div>
+            </div>
+          </div>
+          <div class="card rv fc w2">
+            <span class="fc-i">{{ I.fLink }}</span>
+            <b>Webhooks</b>
+            <p>Cada evento de la actividad llega firmado a tu sistema, con reintentos y bitácora.</p>
+            <div class="fx fx-log">
+              <div><b>200</b><span>activity.closed</span><em>58 ms</em></div>
+              <div><b>200</b><span>activity.started</span><em>140 ms</em></div>
+              <div><b>200</b><span>activity.created</span><em>84 ms</em></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -281,13 +322,17 @@
 
   <!-- FAQ -->
   <section id="faq" style="padding:0 0 100px">
-    <div class="wrap two" style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start">
-      <div class="rv"><span class="kick">Preguntas</span><h2 class="h2">Lo que siempre nos preguntan.</h2></div>
-      <div class="rv d1" style="border-top:1px solid #ECECF1">
+    <div class="wrap two" style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start">
+      <div class="rv">
+        <span class="kick">Preguntas</span><h2 class="h2">Lo que siempre nos preguntan.</h2>
+        <p class="lead">Respuestas cortas. Si tu duda es sobre tu operación en particular, mejor la vemos en una demo.</p>
+        <div class="fq-more"><b>¿Otra duda?</b><p>Te respondemos el mismo día, en español y con alguien que conoce el producto.</p><div class="fq-more-r"><a href="#demo" class="btn p">Solicitar demo</a><a href="{{ cMailto }}" class="fq-mail">{{ cMail }}</a></div></div>
+      </div>
+      <div class="rv d1 fq-l">
         <sc-for list="{{ faqs }}" as="f">
-          <div style="border-bottom:1px solid #ECECF1">
-            <button type="button" aria-expanded="{{ f.aria }}" onClick="{{ f.on }}" style="width:100%;border:0;background:none;cursor:pointer;padding:20px 0;display:flex;align-items:center;gap:14px;text-align:left;font-size:16.5px;font-weight:600;color:#111118">{{ f.q }}<span style="margin-left:auto;width:28px;height:28px;border-radius:50%;background:{{ f.nBg }};color:{{ f.nFg }};display:grid;place-items:center;flex:none;transform:{{ f.rot }};transition:all .25s">{{ I.plusSm }}</span></button>
-            <sc-if value="{{ f.open }}"><p class="fade" style="margin:0;padding:0 50px 20px 0;font-size:15px;line-height:1.6;color:#4B4C58">{{ f.a }}</p></sc-if>
+          <div class="{{ f.cls }}">
+            <button type="button" aria-expanded="{{ f.aria }}" onClick="{{ f.on }}"><i>{{ f.n }}</i><span>{{ f.q }}</span><em>{{ f.tg }}</em></button>
+            <sc-if value="{{ f.open }}"><div class="fade fq-a"><p>{{ f.a }}</p><div class="fq-c"><sc-for list="{{ f.chips }}" as="c"><span class="{{ c.cls }}">{{ c.ck }}{{ c.t }}</span></sc-for></div></div></sc-if>
           </div>
         </sc-for>
       </div>
@@ -301,10 +346,11 @@
         <div>
           <span class="kick">Demo</span>
           <h2 class="h2">Pon a tu equipo en orden esta semana.</h2>
-          <p class="lead">Te mostramos HelmPoint con tu propio flujo en 30 minutos.</p>
+          <p class="lead">Agenda una demo en vivo y resuelve tus dudas con nosotros.</p>
           <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px">
             <sc-for list="{{ demoPts }}" as="d"><span style="display:flex;gap:10px;align-items:center;font-size:15px;color:#4B4C58"><span class="chk">{{ I.checkXs }}</span>{{ d.t }}</span></sc-for>
           </div>
+          <div class="hl" style="background:#EAE2FD"><span class="hl-i">{{ I.calW }}</span><div><b>30 minutos con tu propio flujo</b><p>Cuéntanos qué hace tu equipo en campo y en la demo lo ves armado en HelmPoint, no un ejemplo genérico.</p></div></div>
         </div>
         <div class="card" style="padding:28px;border-color:#ECECF1">
           <sc-if value="{{ notSent }}">
