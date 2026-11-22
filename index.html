@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=20261121">
+<link rel="stylesheet" href="assets/styles.css?v=20261121b">
 </head>
 <body>
 <div id="app"></div>
@@ -44,7 +44,7 @@
           <div class="hx">
             <span class="hx-l">Una actividad, paso a paso</span>
             <div class="hx-b" role="group" aria-label="Etapas de una actividad">
-              <sc-for list="{{ stages }}" as="g"><button type="button" class="{{ g.cls }}" onClick="{{ g.on }}"><span class="hx-i">{{ g.ic }}</span><span class="hx-t"><b>{{ g.t }}</b><small>{{ g.d }}</small></span><em>{{ g.n }}</em><i class="hx-p" style="{{ g.bar }}"></i></button></sc-for>
+              <sc-for list="{{ stages }}" as="g"><button type="button" class="{{ g.cls }}" onClick="{{ g.on }}"><span class="hx-i">{{ g.ic }}</span><span class="hx-t"><b>{{ g.t }}</b><small>{{ g.d }}</small></span><i class="hx-p" style="{{ g.bar }}"></i></button></sc-for>
             </div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:26px;align-items:center">
@@ -360,7 +360,7 @@
       <div class="rv d1 fq-l">
         <sc-for list="{{ faqs }}" as="f">
           <div class="{{ f.cls }}">
-            <button type="button" aria-expanded="{{ f.aria }}" onClick="{{ f.on }}"><i>{{ f.n }}</i><span>{{ f.q }}</span><em>{{ f.tg }}</em></button>
+            <button type="button" aria-expanded="{{ f.aria }}" onClick="{{ f.on }}"><span>{{ f.q }}</span><em>{{ f.tg }}</em></button>
             <sc-if value="{{ f.open }}"><div class="fade fq-a"><p>{{ f.a }}</p><div class="fq-c"><sc-for list="{{ f.chips }}" as="c"><span class="{{ c.cls }}">{{ c.ck }}{{ c.t }}</span></sc-for></div></div></sc-if>
           </div>
         </sc-for>
@@ -536,7 +536,7 @@
   <div class="a-nav"><span class="on">{{ v.I.cal }}Hoy</span><span>{{ v.I.pie }}Resumen</span><u>{{ v.I.plus }}</u><span>{{ v.I.bellN }}Avisos</span><span>{{ v.I.user }}Perfil</span></div>
 </div>
 </template>
-<script src="assets/icons.js?v=20261121"></script>
-<script src="assets/app.js?v=20261121"></script>
+<script src="assets/icons.js?v=20261121b"></script>
+<script src="assets/app.js?v=20261121b"></script>
 </body>
 </html>
