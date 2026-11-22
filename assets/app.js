@@ -150,6 +150,7 @@ class Component extends DCLogic {
     let th='light';try{th=localStorage.getItem('helmpoint-theme')||th}catch(e){}document.documentElement.dataset.theme=th;
     const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this._esc=e=>{if(e.key==='Escape'&&this.state.lgOpen)this.setState({lgOpen:false})};window.addEventListener('keydown',this._esc);
+    const lh={'#terminos':'t','#privacidad':'p'}[location.hash];if(lh)this.setState({lgOpen:true,lgTab:lh,lgSec:0});
     this._mq=window.matchMedia?window.matchMedia('(max-width:980px)'):{matches:false};
     if(!reduce)this._iv=setInterval(()=>this.setState(x=>{const t=x.t+1;
       // en móvil no hay scroll-spy: el paso avanza solo (cada 4 ticks) salvo que la persona haya tocado uno hace poco
