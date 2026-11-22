@@ -24,6 +24,7 @@
       </a>
       <nav class="nav-links" style="display:flex;gap:4px">
         <sc-for list="{{ links }}" as="l"><a class="sx2" href="{{ l.href }}" style="height:40px;padding:0 12px;border-radius:999px;display:flex;align-items:center;font-size:14.5px;font-weight:500;color:#4B4C58" >{{ l.t }}</a></sc-for>
+        <a class="nav-ai" href="asistente.html">{{ I.fSparkle }}Conecta tu IA</a>
       </nav>
       <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
         <a href="#" class="sx3 nav-links" style="height:44px;padding:0 14px;display:flex;align-items:center;font-size:14.5px;font-weight:600;color:#111118" >Iniciar sesión</a>
@@ -252,6 +253,7 @@
             <span class="fc-i">{{ I.fSparkle }}</span>
             <b>Conecta Claude o ChatGPT</b>
             <p>Pídele un formulario o un tipo de actividad, o mándale una imagen o un PDF para que lo arme a partir de ahí. Te regresa una vista previa con enlace y contraseña para revisarla en equipo.</p>
+            <a href="asistente.html" class="btn p" style="margin-top:16px;height:42px;padding:0 18px;font-size:14px;align-self:flex-start">Conecta tu IA {{ I.arrowR }}</a>
             <div class="fx">
               <div class="fx-q"><span>{{ I.clip }}checklist-mantenimiento.pdf</span>Arma este checklist como formulario, tal como viene en el PDF.</div>
               <div class="fx-a">Listo. Aquí está la vista previa para revisarla con tu equipo:<span>{{ I.link13 }}Vista previa · PIN 4821</span></div>
@@ -291,6 +293,28 @@
   </section>
 
   <!-- PRECIOS -->
+  <!-- ASISTENTE: banda que lleva a asistente.html -->
+  <section id="asistente" style="padding:0 0 100px">
+    <div class="wrap">
+      <div class="ai-band rv">
+        <div class="ai-band-t">
+          <span class="ai-band-k">{{ I.fSparkle }}Asistente con IA</span>
+          <h2>Conecta HelmPoint con Claude o ChatGPT.</h2>
+          <p>Consulta actividades, genera formularios a partir de un PDF, asigna trabajo y configura avisos desde la conversación.</p>
+          <div class="ai-band-b">
+            <a href="asistente.html" class="btn p">Conecta tu IA {{ I.arrowR }}</a>
+            <a href="asistente.html#capacidades" class="ai-band-l">Ver todo lo que puede hacer {{ I.chevR }}</a>
+          </div>
+        </div>
+        <div class="ai-band-c" aria-hidden="true">
+          <div class="ai-q">¿Qué actividades siguen abiertas esta semana?</div>
+          <div class="ai-a">Hay 3 abiertas: 1 en curso, 1 asignada y 1 en revisión. ¿Te las detallo por persona?</div>
+          <div class="ai-q">Cuando guarden la firma, avísame por correo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="precios" style="padding:0 0 100px">
     <div class="wrap">
       <div class="rv" style="text-align:center;display:flex;flex-direction:column;align-items:center">
