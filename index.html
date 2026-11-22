@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=20261121">
 </head>
 <body>
 <div id="app"></div>
@@ -39,13 +39,18 @@
       <div class="hero-g">
         <div class="hero-t">
           <span class="kick">App para equipos en campo</span>
-          <h1>Tus visitas en orden, <em>en tiempo real.</em></h1>
-          <p class="lead" style="font-size:18px">Tu equipo registra desde el celular lo que cada actividad pida: ubicación, formulario, fotos o firma, con o sin señal. Tú la ves avanzar en el panel, paso por paso.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:30px;align-items:center">
+          <h1>Cada visita, de principio a fin.</h1>
+          <p class="lead" style="font-size:17.5px">Tu equipo registra en el celular ubicación, formulario, fotos y firma, con o sin señal. Tú ves cada actividad avanzar en el panel.</p>
+          <div class="hx">
+            <span class="hx-l">Una actividad, paso a paso</span>
+            <div class="hx-b" role="group" aria-label="Etapas de una actividad">
+              <sc-for list="{{ stages }}" as="g"><button type="button" class="{{ g.cls }}" onClick="{{ g.on }}"><span class="hx-i">{{ g.ic }}</span><span class="hx-t"><b>{{ g.t }}</b><small>{{ g.d }}</small></span><em>{{ g.n }}</em><i class="hx-p" style="{{ g.bar }}"></i></button></sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:26px;align-items:center">
             <a href="#demo" class="btn p">Pide tu demo {{ I.arrowR }}</a>
             <a href="#como" class="lnk">Ver cómo funciona {{ I.chevR }}</a>
           </div>
-          <div class="route"><span><i></i>Asignas</span><b></b><span><i></i>Se registra en sitio</span><b></b><span class="end"><i></i>Autorizas el cierre</span></div>
         </div>
         <div class="fit hero-art" data-w="480" data-max="1.125" style="--w:480;--h:650" aria-hidden="true"><div class="fit-in">
           <svg class="trail" viewBox="0 0 480 610" width="480" height="610" fill="none" style="position:absolute;left:0;top:0">
@@ -531,7 +536,7 @@
   <div class="a-nav"><span class="on">{{ v.I.cal }}Hoy</span><span>{{ v.I.pie }}Resumen</span><u>{{ v.I.plus }}</u><span>{{ v.I.bellN }}Avisos</span><span>{{ v.I.user }}Perfil</span></div>
 </div>
 </template>
-<script src="assets/icons.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/icons.js?v=20261121"></script>
+<script src="assets/app.js?v=20261121"></script>
 </body>
 </html>

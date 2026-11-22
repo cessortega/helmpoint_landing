@@ -175,6 +175,8 @@ class Component extends DCLogic {
       links:[['Cómo funciona','#como'],['Producto','#producto'],['Precios','#precios'],['Preguntas','#faq']].map(([t,href])=>({t,href})),
       sbD:sbar('#34312B'),sbOff:sbar('#34312B',true),
       // Hero: una misma actividad vista en la app y en el panel, de la asignación al cierre.
+      // Hero: las etapas de la actividad van al ritmo del teléfono (H = 9 momentos) y al tocar una, el teléfono salta ahí.
+      stages:[['send','Asignas','Llega al celular de tu equipo',0,2],['pin','Se registra en sitio','Ubicación, formulario, fotos y firma',2,3],['clock','Se envía a revisión','Con o sin señal',5,2],['check','Autorizas el cierre','Tu cliente se entera por correo',7,2]].map(([i,t,d,from,len],n)=>{const on=H>=from&&H<from+len;return {t,d,n:'0'+(n+1),ic:ic(i,17,2.2),cls:on?'hx-r on':'hx-r',bar:'width:'+(on?Math.round((H-from+1)/len*100):0)+'%',on:()=>set({t:from})}}),
       hero:(()=>{const k=[0,0,1,2,3,4,4,5,5][H];
         return{list:H===0,det:H>0,d:detail(k),l:listV(true)}})(),
       // Cómo funciona: 5 pasos. En escritorio el paso activo lo marca el scroll; en móvil avanza solo o al tocar.
