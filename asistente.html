@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HelmPoint · Conecta Claude o ChatGPT</title>
+<meta name="description" content="Conecta HelmPoint con Claude o ChatGPT: una sola dirección, sin instalar nada. Consulta actividades, arma formularios y tipos de actividad, y configura avisos hablando con tu asistente.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/asistente.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 12h10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="3"/><path d="M9 8.5h6M9 12.5h6M9 16.5h3.5"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="7" height="6" rx="2"/><rect x="13.5" y="14" width="7" height="6" rx="2"/><path d="M7 10v3.5a3.5 3.5 0 0 0 3.5 3.5h3"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+</svg>
+
+<header class="as-nav">
+  <div class="wrap">
+    <a class="as-logo" href="index.html"><svg width="28" height="30" viewBox="62 44 230 242" fill="none" style="color:#111118"><rect x="132" y="50" width="12" height="28" rx="6" fill="#7C3AED"></rect><rect x="132" y="158" width="12" height="28" rx="6" fill="currentColor"></rect><rect x="70" y="112" width="28" height="12" rx="6" fill="currentColor"></rect><rect x="178" y="112" width="28" height="12" rx="6" fill="currentColor"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(102 82) rotate(45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(174 82) rotate(-45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(102 154) rotate(-45)"></rect><rect x="-8" y="-5" width="16" height="10" rx="5" fill="currentColor" transform="translate(174 154) rotate(45)"></rect><circle cx="138" cy="118" r="27" stroke="currentColor" stroke-width="13"></circle><circle cx="138" cy="118" r="7" fill="currentColor"></circle><g fill="currentColor"><circle cx="138" cy="197" r="7"></circle><circle cx="152" cy="211" r="7"></circle><circle cx="173" cy="211" r="7"></circle><circle cx="195" cy="207" r="7"></circle><circle cx="217" cy="203" r="7"></circle><circle cx="238" cy="202" r="7"></circle></g><circle cx="252" cy="247" r="32" fill="#7C3AED"></circle><circle cx="252" cy="247" r="16" fill="#FFFFFF"></circle><circle cx="252" cy="247" r="8" fill="#7C3AED"></circle></svg><span>HelmPoint</span></a>
+    <nav class="as-links">
+      <a href="index.html#como">Cómo funciona</a>
+      <a href="index.html#producto">Producto</a>
+      <a href="index.html#precios">Precios</a>
+      <a href="asistente.html" aria-current="page">Asistente</a>
+    </nav>
+    <a href="index.html#demo" class="btn p">Pide tu demo</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="as-hero">
+    <div class="wrap as-hero-g">
+      <div>
+        <span class="kick">Asistente con IA</span>
+        <h1>HelmPoint, dentro de <em>Claude o ChatGPT.</em></h1>
+        <p class="lead">Pregúntale por tus actividades, pídele un formulario a partir de un PDF o arma un tipo de actividad completo, hablando. Trabaja con tu cuenta y solo con la información de tu empresa.</p>
+        <div class="as-url">
+          <span class="as-url-l">Dirección del conector</span>
+          <div class="as-url-r">
+            <code id="mcp-url">https://mcp.helmpoint.helmdeck.ai/mcp</code>
+            <button type="button" class="as-copy" id="copy-url" aria-live="polite"><svg width="17" height="17"><use href="#i-copy"/></svg><span>Copiar</span></button>
+          </div>
+          <p>No hay nada que descargar ni instalar: es la misma dirección para Claude y para ChatGPT. La pegas una vez, inicias sesión con tu cuenta de HelmPoint y listo.</p>
+        </div>
+      </div>
+      <div class="as-chat" aria-hidden="true">
+        <div class="as-chat-h"><i></i>HelmPoint conectado</div>
+        <div class="as-q">¿Qué actividades siguen abiertas esta semana y quién las tiene?</div>
+        <div class="as-a">Hay 3 actividades abiertas:
+          <ul>
+            <li><span><b>Mantenimiento preventivo</b> · Laura M. · en curso</span></li>
+            <li><span><b>Entrega en sucursal Norte</b> · Diego R. · asignada</span></li>
+            <li><span><b>Auditoría de anaquel</b> · Sofía P. · en revisión</span></li>
+          </ul>
+        </div>
+        <div class="as-q">Cuando guarden la firma de recibido, avísame por correo.</div>
+        <div class="as-a">Listo. Te propongo esta regla; confírmame y la guardo.<br><span class="as-pill"><svg width="12" height="12"><use href="#i-bolt"/></svg>Al guardar «Firma de recibido» → correo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONECTAR -->
+  <section class="as-sec" id="conectar">
+    <div class="wrap">
+      <div class="as-head">
+        <span class="kick">Cómo se conecta</span>
+        <h2 class="h2">Cuatro pasos, una sola vez.</h2>
+        <p class="lead">Necesitas una cuenta de administrador en HelmPoint y un plan de Claude o ChatGPT que permita agregar conectores propios.</p>
+        <div class="as-tabs" role="tablist" aria-label="Asistente">
+          <button type="button" role="tab" id="tab-claude" aria-controls="panel-claude" aria-selected="true">Claude</button>
+          <button type="button" role="tab" id="tab-chatgpt" aria-controls="panel-chatgpt" aria-selected="false" tabindex="-1">ChatGPT</button>
+        </div>
+      </div>
+
+      <div class="as-panel" id="panel-claude" role="tabpanel" aria-labelledby="tab-claude">
+        <ol class="as-steps">
+          <li><b>Abre los conectores</b><p>En Claude entra a <kbd>Personalizar</kbd> › <kbd>Conectores</kbd>, pulsa <kbd>+ Agregar</kbd> y elige <kbd>Agregar conector personalizado</kbd>.</p></li>
+          <li><b>Pega la dirección</b><p>Ponle un nombre, por ejemplo «HelmPoint», y pega la dirección del conector tal cual, con <kbd>/mcp</kbd> al final.</p></li>
+          <li><b>Inicia sesión</b><p>Claude abre HelmPoint. Entras con tu correo y contraseña de siempre (y tu código de dos pasos, si lo usas).</p></li>
+          <li><b>Autoriza y úsalo</b><p>Revisas los permisos, autorizas y vuelves a Claude. En cualquier conversación ya puedes pedirle cosas de tu operación.</p></li>
+        </ol>
+        <div class="as-notes">
+          <div class="as-note"><b>En planes Team y Enterprise</b>Primero lo agrega un propietario de la organización, en <kbd>Configuración de la organización</kbd> › <kbd>Conectores</kbd> › <kbd>Agregar</kbd> › <kbd>Personalizado</kbd> › <kbd>Web</kbd>. Después cada persona lo conecta con su propia cuenta.</div>
+          <div class="as-note"><b>Los menús pueden cambiar</b>Si no encuentras alguna opción, la guía vigente está en el <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" target="_blank" rel="noopener">centro de ayuda de Claude</a>.</div>
+        </div>
+      </div>
+
+      <div class="as-panel" id="panel-chatgpt" role="tabpanel" aria-labelledby="tab-chatgpt" hidden>
+        <ol class="as-steps">
+          <li><b>Agrega un servidor</b><p>En ChatGPT web entra a <kbd>Plugins</kbd>, pulsa el botón <kbd>+</kbd> y elige <kbd>Add custom MCP server</kbd>.</p></li>
+          <li><b>Pega la dirección</b><p>Ponle un nombre y pega la dirección del conector completa, con <kbd>/mcp</kbd> al final. En autenticación elige <kbd>OAuth</kbd>.</p></li>
+          <li><b>Confirma y créalo</b><p>ChatGPT muestra un aviso para servidores externos. Lo aceptas, pulsas <kbd>Create as a plugin</kbd> y lo instalas.</p></li>
+          <li><b>Inicia sesión y úsalo</b><p>Entras con tu cuenta de HelmPoint y autorizas. En el chat lo llamas escribiendo <kbd>@</kbd> y eligiendo HelmPoint.</p></li>
+        </ol>
+        <div class="as-notes">
+          <div class="as-note"><b>Planes de ChatGPT</b>Agregar servidores propios está disponible en ChatGPT Business, Enterprise y Edu, desde la versión web. En Business lo crea un administrador o propietario.</div>
+          <div class="as-note"><b>Los menús pueden cambiar</b>Si no encuentras alguna opción, la guía vigente está en el <a href="https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt" target="_blank" rel="noopener">centro de ayuda de OpenAI</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="as-sec" id="capacidades">
+    <div class="wrap">
+      <div class="as-box">
+        <div class="as-head">
+          <span class="kick">Lo que puede hacer</span>
+          <h2 class="h2" style="max-width:680px">Lo mismo que harías en el panel, pidiéndolo con tus palabras.</h2>
+          <p class="lead">Cada cosa que el asistente crea o cambia queda en tu HelmPoint, igual que si la hubieras hecho tú desde el panel.</p>
+        </div>
+        <div class="as-caps">
+          <div class="as-cap">
+            <span class="as-cap-i"><svg width="22" height="22"><use href="#i-search"/></svg></span>
+            <b>Consulta tu operación</b>
+            <p>Actividades por estado, fecha o persona; lo que se contestó en cada paso, con sus fotos y su firma; clientes, categorías y usuarios.</p>
+            <div class="as-say"><span>¿Qué actividades cerró Laura la semana pasada?</span></div>
+          </div>
+          <div class="as-cap">
+            <span class="as-cap-i"><svg width="22" height="22"><use href="#i-cal"/></svg></span>
+            <b>Crea y asigna actividades</b>
+            <p>Crea una actividad con su tipo, cliente, fecha y responsable. Edita las que siguen asignadas y elimina solo con tu confirmación.</p>
+            <div class="as-say"><span>Asígnale a Diego una entrega en sucursal Norte para mañana.</span></div>
+          </div>
+          <div class="as-cap">
+            <span class="as-cap-i"><svg width="22" height="22"><use href="#i-form"/></svg></span>
+            <b>Arma formularios</b>
+            <p>A partir de una descripción, una imagen o un PDF. Con todos los tipos de pregunta y preguntas Sí / No que abren otras preguntas adentro.</p>
+            <div class="as-say"><span>Arma este checklist como formulario, tal como viene en el PDF.</span></div>
+          </div>
+          <div class="as-cap">
+            <span class="as-cap-i"><svg width="22" height="22"><use href="#i-flow"/></svg></span>
+            <b>Diseña tipos de actividad</b>
+            <p>Te guía sección por sección: datos generales, comportamiento, secuencia de pasos, notificaciones y quién puede usarlo o autorizar.</p>
+            <div class="as-say"><span>Quiero un tipo «Instalación» con ubicación, fotos antes y después, y firma.</span></div>
+          </div>
+          <div class="as-cap">
+            <span class="as-cap-i g"><svg width="22" height="22"><use href="#i-eye"/></svg></span>
+            <b>Vista previa antes de crear</b>
+            <p>Todo diseño nuevo llega primero como un enlace con contraseña. Tu equipo lo revisa como se verá en el celular, deja notas o lo edita ahí mismo.</p>
+            <div class="as-say"><span>Mándame la vista previa para revisarla con mi equipo.</span></div>
+          </div>
+          <div class="as-cap">
+            <span class="as-cap-i"><svg width="22" height="22"><use href="#i-bolt"/></svg></span>
+            <b>Notificaciones personalizadas <span class="as-tag">Plan Pro</span></b>
+            <p>Reglas por paso: cuando se guarda un paso y se cumple una condición, envía un correo, una push, un aviso a administradores o un webhook.</p>
+            <div class="as-say"><span>Cuando el avance sea mayor a 90, avísame por correo.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALCANCE -->
+  <section class="as-sec" id="alcance">
+    <div class="wrap">
+      <div class="as-head">
+        <span class="kick">Qué puede modificar</span>
+        <h2 class="h2">El alcance, sin letras chiquitas.</h2>
+        <p class="lead">Esto es lo que el asistente puede ver, crear, editar y eliminar en tu empresa.</p>
+      </div>
+      <div class="as-table" role="table" aria-label="Alcance del asistente">
+        <div class="as-tr" role="row"><div role="columnheader">Sección</div><span role="columnheader" data-s="Ver">Ver</span><span role="columnheader" data-s="Crea">Crear</span><span role="columnheader" data-s="Edita">Editar</span><span role="columnheader" data-s="Borra">Eliminar</span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Actividades</b><small>Editar, solo mientras siguen asignadas.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Tipos de actividad</b><small>Incluye pasos, fotos de referencia, notificaciones y clonar.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Formularios</b><small>Preguntas, ramas, imágenes de apoyo y clonar.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Clientes</b><small>Datos, foto y constancia; para todos los tipos o solo algunos.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Categorías y subcategorías</b></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Notificaciones personalizadas</b><small>Reglas por tipo de actividad. Plan Pro y Empresa.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Lo que se registra en campo</b><small>Respuestas, ubicación, fotos y firma: solo consulta.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span></div>
+        <div class="as-tr" role="row"><div role="cell"><b>Usuarios</b><small>Consulta quién es quién, su rol y su último acceso.</small></div><span role="cell"><i class="chk" aria-label="Sí"><svg width="13" height="13"><use href="#i-check"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span><span role="cell"><i class="as-no" aria-label="No"><svg width="14" height="14"><use href="#i-minus"/></svg></i></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJA -->
+  <section class="as-sec" id="como-trabaja">
+    <div class="wrap">
+      <div class="as-head">
+        <span class="kick">Cómo trabaja</span>
+        <h2 class="h2">Con tus permisos, y preguntando antes de cambiar algo.</h2>
+      </div>
+      <div class="as-rules">
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Solo tu empresa</b><p>Entra con tu cuenta y únicamente ve la información de tu empresa. Lo de otras empresas no existe para el asistente.</p></div></div>
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Tú autorizas el acceso</b><p>Al conectarlo ves qué permisos pide, de lectura y de escritura, y decides si lo autorizas. HelmPoint nunca le entrega tu contraseña.</p></div></div>
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Pregunta lo que le falta</b><p>Antes de crear o editar revisa qué datos son obligatorios y te los pide. No inventa nombres, correos ni opciones.</p></div></div>
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Confirma antes de eliminar</b><p>Eliminar o desactivar algo siempre pasa por tu confirmación, y te dice a qué afecta, por ejemplo cuántas actividades abiertas usan ese tipo.</p></div></div>
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Nada nuevo sin vista previa</b><p>Un formulario o tipo de actividad nuevo se crea hasta que revisas la vista previa y confirmas. El enlace lleva una contraseña de 4 dígitos.</p></div></div>
+        <div class="as-rule"><span class="chk"><svg width="13" height="13"><use href="#i-check"/></svg></span><div><b>Fotos y firmas por enlace temporal</b><p>Para mostrarte una foto o una firma genera un enlace que vence en una hora y solo abre archivos de esa actividad.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÍMITES -->
+  <section class="as-sec" id="limites">
+    <div class="wrap as-two">
+      <div>
+        <span class="kick">Para que no haya sorpresas</span>
+        <h2 class="h2">Lo que no hace.</h2>
+        <p class="lead">El asistente organiza y consulta. El trabajo en sitio sigue siendo de tu equipo, desde la app.</p>
+      </div>
+      <ul class="as-list">
+        <li><span class="as-x"><svg width="12" height="12"><use href="#i-x"/></svg></span><span><b>No llena actividades.</b> Ubicación, respuestas, fotos y firma se registran en campo, con la app.</span></li>
+        <li><span class="as-x"><svg width="12" height="12"><use href="#i-x"/></svg></span><span><b>No administra usuarios.</b> Puede consultarlos, pero las altas, bajas y permisos se hacen en el panel.</span></li>
+        <li><span class="as-x"><svg width="12" height="12"><use href="#i-x"/></svg></span><span><b>No autoriza ni rechaza cierres.</b> Esa decisión es de quien tú nombraste autorizador.</span></li>
+        <li><span class="as-x"><svg width="12" height="12"><use href="#i-x"/></svg></span><span><b>No edita actividades que ya iniciaron.</b> Solo las que siguen asignadas.</span></li>
+        <li><span class="as-x"><svg width="12" height="12"><use href="#i-x"/></svg></span><span><b>No cambia la configuración de la empresa.</b> Plan, seguridad y el destino del webhook se manejan en el panel.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="as-sec">
+    <div class="wrap">
+      <div class="as-cta">
+        <div>
+          <h2>¿Todavía no usas HelmPoint?</h2>
+          <p>Te lo mostramos funcionando con un flujo como el de tu operación, asistente incluido.</p>
+        </div>
+        <div class="as-cta-b">
+          <a href="index.html#demo" class="btn p">Pide tu demo <svg width="17" height="17"><use href="#i-arrow"/></svg></a>
+          <a href="index.html#precios" class="btn o">Ver precios</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="as-foot">
+  <div class="wrap"><div><span>© 2026 HelmPoint · Helmdeck S.A.S.</span><a href="index.html">Inicio</a><a href="index.html#faq">Preguntas</a></div></div>
+</footer>
+
+<script>
+(function(){
+  // Copiar la dirección del conector.
+  var btn=document.getElementById('copy-url'),url=document.getElementById('mcp-url').textContent.trim(),lbl=btn.querySelector('span'),t;
+  btn.addEventListener('click',function(){
+    var done=function(){btn.classList.add('ok');lbl.textContent='Copiada';clearTimeout(t);t=setTimeout(function(){btn.classList.remove('ok');lbl.textContent='Copiar'},2200)};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(url).then(done,fallback)}else fallback();
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mcp-url'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy'))done()}catch(e){}}
+  });
+  // Pestañas Claude / ChatGPT.
+  var tabs=[].slice.call(document.querySelectorAll('.as-tabs [role=tab]'));
+  function pick(tab){tabs.forEach(function(x){var on=x===tab;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+  tabs.forEach(function(tab,i){
+    tab.addEventListener('click',function(){pick(tab)});
+    tab.addEventListener('keydown',function(e){if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];pick(n);n.focus()});
+  });
+  function fromHash(){if(location.hash==='#chatgpt')pick(tabs[1]);else if(location.hash==='#claude')pick(tabs[0])}
+  fromHash();addEventListener('hashchange',fromHash);
+})();
+</script>
+</body>
+</html>

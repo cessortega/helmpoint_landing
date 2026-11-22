@@ -201,7 +201,7 @@ class Component extends DCLogic {
       billing:[[false,'Mensual'],[true,'Anual']].map(([a,t])=>{const on=s.annual===a;return {t,save:a,aria:on?'true':'false',on:()=>set({annual:a}),bg:on?'#FFFFFF':'transparent',fg:on?'#111118':'#4B4C58',sh:on?'0 2px 8px -4px rgba(17,17,30,.25)':'none'}}),
       plans:[
         ['Inicial','Para empezar a ordenar tu operación.',P[0],'MXN / mes',Y[0],['App para tu equipo en campo','Hasta 3 tipos de actividad','Formularios, fotos y firma','Reporte PDF y exportar a Excel','MFA incluido'],'Solicitar demo',false],
-        ['Pro','Para equipos que entregan reportes a sus clientes.',P[1],'MXN / mes',Y[1],['Todo lo de Inicial','Formularios anidados ilimitados','Autorizar y rechazar','Avisos por correo y WhatsApp','Conecta Claude o ChatGPT (MCP)'],'Solicitar demo',true],
+        ['Pro','Para equipos que entregan reportes a sus clientes.',P[1],'MXN / mes',Y[1],['Todo lo de Inicial','Formularios anidados ilimitados','Autorizar y rechazar','Avisos por correo y WhatsApp','Notificaciones personalizadas a tu necesidad','Conecta Claude o ChatGPT (MCP)'],'Solicitar demo',true],
         ['Empresa','Para operaciones con varias empresas o regiones.','Hablemos','','',['Todo lo de Pro','Multiempresa con tu marca','Webhooks e integraciones','Soporte prioritario','Soporte a la medida'],'Armemos tu plan',false]
       ].map(([name,desc,price,unit,yearly,items,cta,pop],n)=>({name,desc,price,unit,yearly,pop,cta,seatBg:pop?'#F3EEFF':'#F4F4F7',seatT:n<2?'Incluye 5 usuarios':'Usuarios a tu medida',seatD:n<2?'Admin, supervisor o campo, como quieras':'Paquetes según el tamaño de tu equipo',seats:[0,1,2,3,4].map(i=>{const more=n===2&&i>2;return{cls:more?'more':'',ic:ic(more?'plus':'user',more?12:13,2.4)}}),items:items.map(t=>({t})),border:pop?'2px solid #7C3AED':'1px solid #ECECF1',btn:pop?'p':'o'})),
       
@@ -234,7 +234,7 @@ class Component extends DCLogic {
         tabs:[['t','Términos de uso'],['p','Aviso de Privacidad']].map(([k,x])=>{const on=s.lgTab===k;return {t:x,aria:on?'true':'false',on:()=>set({lgTab:k,lgSec:0}),bg:on?'var(--surface)':'transparent',fg:on?'var(--text)':'var(--text-2)',sh:on?'var(--shadow-sm)':'none'}}),
         d:{title:d.title,ver:d.ver,date:d.date,foot:d.foot,sum:d.sum.map(([i,x,dd])=>({ic:ic(i,17,2.2),t:x,d:dd})),
           secs:d.secs.map(([x,ps],k)=>{const open=s.lgSec===k;return {n:String(k+1).padStart(2,'0'),t:x,open,aria:open?'true':'false',on:()=>set({lgSec:open?null:k}),rot:open?'rotate(180deg)':'none',bd:open?'color-mix(in srgb, var(--accent) 35%, var(--line))':'var(--line)',ps:ps.map(t=>({t}))}})}}})(),
-      footCols:[['Producto',[['Cómo funciona','#como'],['Lo que incluye','#producto'],['Precios','#precios']]],['Empresa',[['Contacto','#demo'],['Preguntas','#faq'],['Iniciar sesión','#']]],['Legal',[['Términos de uso','#','t'],['Aviso de Privacidad','#','p']]]].map(([t,items])=>({t,items:items.map(([x,h,lk])=>({t:x,h,on:lk?(e=>{e.preventDefault();set({lgOpen:true,lgTab:lk,lgSec:0})}):(()=>{})}))}))
+      footCols:[['Producto',[['Cómo funciona','#como'],['Lo que incluye','#producto'],['Asistente con IA','asistente.html'],['Precios','#precios']]],['Empresa',[['Contacto','#demo'],['Preguntas','#faq'],['Iniciar sesión','#']]],['Legal',[['Términos de uso','#','t'],['Aviso de Privacidad','#','p']]]].map(([t,items])=>({t,items:items.map(([x,h,lk])=>({t:x,h,on:lk?(e=>{e.preventDefault();set({lgOpen:true,lgTab:lk,lgSec:0})}):(()=>{})}))}))
     };
   }
 }
